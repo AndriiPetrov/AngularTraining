@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DemoApp';
+
+  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+  isavailable = true;
+  myClickFunction(event) {
+    this.isavailable = !this.isavailable;
+  }
+  changemonths(event) {
+    alert("Changed month from the Dropdown");
+  }
 }
