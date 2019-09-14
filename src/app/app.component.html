@@ -1,4 +1,4 @@
-<div style = "text-align: center">
+<!-- <div style = "text-align: center">
   <h1>
     Welcome to {{ title }}!
   </h1>
@@ -23,9 +23,56 @@
 </button>
 
 <div style="text-align: center">
-  <span ChangeText>Welcome to {{title}}.</span>
+  <span ChangeText>Welcome to {{title | lowercase}}.</span>
 </div>
 <div ChangeText>Some Test</div>
-<app-new-cmp></app-new-cmp>
+
+<b>{{title | uppercase}}</b><br/>
+<b>{{title | lowercase}}</b>
+
+<app-new-cmp></app-new-cmp> -->
+
+<!-- <div style = "width: 100%">
+  <div style= "width: 40%; float: left; border:solid 1px black;">
+    <h1>Uppercase Pipe</h1>
+    <b>{{title | uppercase}}</b>
+    <br />
+
+    <h1>Lowercase Pipe</h1>
+    <b>{{title | lowercase}}</b>
+    <h1>Currency Pipe</h1>
+    <b>{{6589.23 | currency:"USD"}}</b>
+    <br/>
+
+    <b>{{6589.23 | currency: "USD" : true}}</b>
+    <h1>Date pipe</h1>
+    <b>{{ todaydate | date:'d/M/y'}}</b>
+    <br />
+
+    <b>{{todaydate | date:'shortTime'}}</b>
+    <h1>Decimal pipe</h1>
+    <b>{{ 454.78787814 | number: '3.4-4' }}</b>
+  </div>
+
+  <div style="width: 40%; float: left; border: solid 1px black;">
+    <h1>Json Pipe</h1>
+    <b>{{ jsonval | json }}</b>
+    <h1>Percent Pipe</h1>
+    <b>{{00.54565 | percent}}</b>
+    <h1>Slice Pipe</h1>
+    <b>{{months | slice:2:6}}</b>
+  </div>
+</div>
+
+<h1>Custom Pipe</h1>
+<b>Square root of 25 is: {{25 | sqrt}}</b>
+<br />
+<b>Square root of 729 is: {{729 | sqrt}}</b> -->
+
+<h1>Angular 7 Routing Demo</h1>
+<nav>
+  <a routerLink = "/home">Home</a>
+  <a routerLink = "/contactus">Contact Us</a>
+</nav>
 
 <router-outlet></router-outlet>
