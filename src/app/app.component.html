@@ -69,10 +69,45 @@
 <br />
 <b>Square root of 729 is: {{729 | sqrt}}</b> -->
 
-<h1>Angular 7 Routing Demo</h1>
+<!-- <h1>Angular 7 Routing Demo</h1>
 <nav>
   <a routerLink = "/home">Home</a>
   <a routerLink = "/contactus">Contact Us</a>
-</nav>
+</nav> -->
+<!-- {{todaydate}}
+<app-new-cmp></app-new-cmp> -->
 
+<!-- <h3>{{todaydate}}</h3>
+<h3> Service Property : {{componentproperty}}</h3>
+<app-new-cmp></app-new-cmp> -->
+
+<!-- <h3>Users Data</h3>
+<ul>
+  <li *ngFor="let item of persondata; let i = index">
+    {{item.name}}
+  </li>
+</ul> -->
+<!-- <form #userlogin = 'ngForm' (ngSubmit) = 'onClickSubmit(userlogin.value)'>
+  <input type = 'text' name = 'emailid' placeholder = 'emailid' ngModel>
+  <br />
+  <input type = 'password' name = 'passwd' placeholder = 'passwd' ngModel>
+  <br />
+  <input type = 'submit' value = 'submit'>
+</form> -->
+
+<div>
+  <form [formGroup] = "formdata" (ngSubmit) = "onClickSubmit(formdata.value)">
+    <input type = "text" class = "fortextbox" name = "emailid" 
+      placeholder = "emailid" formControlName = "emailid">
+    <br />
+
+    <input type = "password" class = "fortextbox" name = "passwd" 
+      placeholder = "passwd" formControlName = "passwd">
+    <br />
+
+    <input type = "submit" [disabled] = "!formdata.valid" class = "forsubmit" 
+      value = "Log in">
+  </form>
+</div>
+<p> Email entered is: {{emailid}}</p>
 <router-outlet></router-outlet>
