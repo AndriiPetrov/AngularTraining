@@ -95,7 +95,7 @@
   <input type = 'submit' value = 'submit'>
 </form> -->
 
-<div>
+<!-- <div>
   <form [formGroup] = "formdata" (ngSubmit) = "onClickSubmit(formdata.value)">
     <input type = "text" class = "fortextbox" name = "emailid" 
       placeholder = "emailid" formControlName = "emailid">
@@ -109,5 +109,39 @@
       value = "Log in">
   </form>
 </div>
-<p> Email entered is: {{emailid}}</p>
+<p> Email entered is: {{emailid}}</p> -->
+
+<!-- <h3>Angular 7 - Virtual Scrolling</h3>
+<cdk-virtual-scroll-viewport [itemSize] = "20">
+  <table>
+    <thead>
+      <tr>
+        <td>ID</td>
+        <td>ThumbNail</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *cdkVirtualFor = "let album of albumdetails">
+        <td>{{album.id}}</td>
+        <td>
+          <img src = "{{album.thumbnailUrl}}" width="100" height="100"/>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</cdk-virtual-scroll-viewport> -->
+
+<h3>Angular 7 - Drag and Drop Module</h3>
+<div cdkDropList
+  #personList = "cdkDropList"
+  [cdkDropListData] = "personaldetails"
+  [cdkDropListConnectedTo] = "[userlist]"
+  class="example-list"
+  (cdkDropListDropped) = "onDrop($event)" >
+
+  <div *ngFor="let item of personaldetails; let i = index" class="divlayout" cdkDrag>
+    {{item.name}}
+  </div>
+</div>
+
 <router-outlet></router-outlet>

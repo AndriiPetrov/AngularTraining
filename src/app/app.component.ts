@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MyserviceService } from './myservice.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-root',
@@ -8,26 +9,54 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Angular 4 Project';
-  todaydate;
-  componentproperty;
-  emailid;
-  formdata;
+  title = "Angular 7 Project!";
+  public personaldetails = [];
+  constructor(private myservice: MyserviceService) {}
   ngOnInit() {
-    this.formdata = new FormGroup({
-      emailid: new FormControl("", Validators.compose([
-        Validators.required,
-        Validators.pattern("[^ @]*@[^ @]*")
-      ])),
-      passwd: new FormControl("", this.passwordvalidation)
-    });
+    this.myservice.getData().subscribe((data) => {
+      this.personaldetails = Array.from(Object.keys(data), k => data[k]);
+      console.log(this.personaldetails);
+    })
   }
-  passwordvalidation(formcontrol) {
-    if (formcontrol.value.length < 5) {
-      return {"passwd" : true};
+  onDrop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     }
   }
-  onClickSubmit(data) { this.emailid = data.emailid; }
+  // title = "Angular 7 Project!";
+  // public albumdetails = [];
+  // constructor(private myservice: MyserviceService) {}
+  // ngOnInit() {
+  //   this.myservice.getData().subscribe((data) => {
+  //     this.albumdetails = Array.from(Object.keys(data), k => data[k]);
+  //     console.log(this.albumdetails);
+  //   });
+  // }
+  // title = 'Angular 4 Project';
+  // todaydate;
+  // componentproperty;
+  // emailid;
+  // formdata;
+  // ngOnInit() {
+  //   this.formdata = new FormGroup({
+  //     emailid: new FormControl("", Validators.compose([
+  //       Validators.required,
+  //       Validators.pattern("[^ @]*@[^ @]*")
+  //     ])),
+  //     passwd: new FormControl("", this.passwordvalidation)
+  //   });
+  // }
+  // passwordvalidation(formcontrol) {
+  //   if (formcontrol.value.length < 5) {
+  //     return {"passwd" : true};
+  //   }
+  // }
+  // onClickSubmit(data) { this.emailid = data.emailid; }
 
   // title = "Angular 7 Project!";
   // emailid;
